@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Sign Up - TRAVELIX</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+TRAVELIX
+</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="signin.html">Sign In</a></li>
+
+</ul>
+
+<button class="toggle-btn">
+Dark Mode
+</button>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="section">
+
+<h1 style="text-align:center; margin-bottom:40px;">
+
+Create New Account
+
+</h1>
+
+<form id="signupForm">
+
+<label>Full Name</label>
+
+<input type="text"
+placeholder="Enter Full Name"
+required>
+
+<label>Email</label>
+
+<input type="email"
+placeholder="Enter Email"
+required>
+
+<label>Password</label>
+
+<input type="password"
+id="password"
+placeholder="Create Password"
+required>
+
+<label>Confirm Password</label>
+
+<input type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+required>
+
+<button class="btn"
+type="submit">
+
+Create Account
+
+</button>
+
+<div class="success-message">
+
+✅ Account Created Successfully!
+
+</div>
+
+</form>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+© 2026 TRAVELIX
+</p>
+
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+
+const signupForm =
+document.getElementById(
+"signupForm"
+);
+
+signupForm.addEventListener(
+"submit",
+(e)=>{
+
+e.preventDefault();
+
+const password =
+document.getElementById(
+"password"
+).value;
+
+const confirmPassword =
+document.getElementById(
+"confirmPassword"
+).value;
+
+if(password !== confirmPassword){
+
+alert(
+"Passwords do not match!"
+);
+
+return;
+
+}
+
+document.querySelector(
+".success-message"
+).style.display = "block";
+
+}
+);
+
+</script>
+</body>
+</html>

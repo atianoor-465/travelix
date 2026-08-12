@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="TRAVELIX Smart Travel Booking Website">
+
+<meta http-equiv="refresh"
+content="300">
+
+<title>TRAVELIX | Smart Travel Booking</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="icon"
+href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f7fb;
+    overflow-x:hidden;
+    transition:0.5s;
+}
+
+.progress-container{
+    width:100%;
+    height:6px;
+    background:#d1d5db;
+    position:fixed;
+    top:0;
+    z-index:9999;
+}
+
+.progress-bar{
+    height:6px;
+    width:0%;
+    background:linear-gradient(to right,#06b6d4,#3b82f6);
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(15,23,42,0.95);
+    backdrop-filter:blur(10px);
+    padding:18px 70px;
+    box-shadow:0 5px 25px rgba(0,0,0,0.2);
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:34px;
+    color:#38bdf8;
+    font-weight:800;
+    letter-spacing:2px;
+    transition:0.5s;
+    cursor:pointer;
+}
+
+.logo:hover{
+    transform:scale(1.08) rotate(-2deg);
+    color:white;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    padding:12px 18px;
+    border-radius:12px;
+    transition:0.5s;
+    position:relative;
+    overflow:hidden;
+}
+
+nav ul li a::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:#38bdf8;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:0.5s;
+    z-index:-1;
+}
+
+nav ul li a:hover::before{
+    transform:scaleX(1);
+}
+
+nav ul li a:hover{
+    color:white;
+    transform:translateY(-3px);
+}
+
+.toggle-btn{
+    padding:14px 22px;
+    border:none;
+    border-radius:14px;
+    background:#38bdf8;
+    color:white;
+    cursor:pointer;
+    transition:0.5s;
+    font-weight:600;
+}
+
+.toggle-btn:hover{
+    transform:scale(1.08);
+    background:#0284c7;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.hero{
+    height:100vh;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    transition:1s;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:white;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero-content h1{
+    font-size:78px;
+    margin-bottom:20px;
+    text-shadow:0 10px 20px rgba(0,0,0,0.4);
+}
+
+.hero-content p{
+    font-size:24px;
+    margin-bottom:30px;
+}
+
+.btn{
+    padding:16px 34px;
+    border:none;
+    border-radius:14px;
+    background:#38bdf8;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.5s;
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:100%;
+    top:0;
+    left:0;
+    background:rgba(255,255,255,0.2);
+    transition:0.5s;
+}
+
+.btn:hover::before{
+    width:100%;
+}
+
+.btn:hover{
+    transform:translateY(-7px) scale(1.03);
+    background:#0284c7;
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+}
+
+.section{
+    padding:90px 70px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+    color:#0f172a;
+}
+
+.search-wrapper{
+    position:relative;
+    margin-bottom:60px;
+}
+
+.search-box{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.search-box input{
+    width:60%;
+    padding:18px;
+    border:none;
+    border-radius:16px;
+    font-size:17px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.5s;
+}
+
+.search-box input:focus{
+    transform:scale(1.02);
+    box-shadow:0 15px 35px rgba(56,189,248,0.4);
+    outline:none;
+}
+
+.search-box button{
+    padding:18px 24px;
+    border:none;
+    border-radius:16px;
+    background:#38bdf8;
+    color:white;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.search-box button:hover{
+    transform:scale(1.1) rotate(5deg);
+    background:#0284c7;
+}
+
+#suggestions{
+    position:absolute;
+    width:60%;
+    left:20%;
+    background:white;
+    border-radius:16px;
+    margin-top:10px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    z-index:10;
+}
+
+#suggestions li{
+    list-style:none;
+    padding:15px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+#suggestions li:hover{
+    background:#38bdf8;
+    color:white;
+    padding-left:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.card{
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    transition:0.6s;
+    position:relative;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+    transform:translateY(-15px) scale(1.03);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.image-container{
+    position:relative;
+    overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    transition:0.8s;
+}
+
+.card:hover img{
+    transform:scale(1.15) rotate(2deg);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.2));
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    opacity:0;
+    transition:0.6s;
+}
+
+.card:hover .overlay{
+    opacity:1;
+}
+
+.overlay h3{
+    font-size:34px;
+    margin-bottom:10px;
+    transform:translateY(40px);
+    transition:0.5s;
+}
+
+.card:hover .overlay h3{
+    transform:translateY(0);
+}
+
+.overlay p{
+    margin-bottom:20px;
+    transform:translateY(40px);
+    transition:0.6s;
+}
+
+.card:hover .overlay p{
+    transform:translateY(0);
+}
+
+.card-content{
+    padding:25px;
+    transition:0.5s;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.card-content p{
+    margin-bottom:10px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:80px;
+}
+
+.stat-box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    transition:0.5s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.stat-box:hover{
+    transform:translateY(-12px);
+    background:#38bdf8;
+    color:white;
+}
+
+footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:80px;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:5000;
+}
+
+.modal-content{
+    background:white;
+    width:90%;
+    max-width:550px;
+    padding:40px;
+    border-radius:24px;
+    text-align:center;
+    animation:popup 0.5s ease;
+}
+
+.close-btn{
+    float:right;
+    font-size:32px;
+    cursor:pointer;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(0.6);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+
+    header{
+        padding:20px;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-content h1{
+        font-size:46px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    #suggestions{
+        width:100%;
+        left:0;
+    }
+
+    .section{
+        padding:70px 20px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="progress-container">
+<div class="progress-bar"
+id="progressBar"></div>
+</div>
+
+<header>
+
+<nav>
+
+<div class="logo">
+TRAVELIX
+</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="booking.html">Booking</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+<li><a href="signin.html">Sign In</a></li>
+
+</ul>
+
+<button class="toggle-btn">
+Dark Mode
+</button>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="hero"
+id="hero">
+
+<div class="hero-content">
+
+<h1>
+Explore Dream Destinations
+</h1>
+
+<p>
+Luxury travel experiences with smart booking.
+</p>
+
+<a href="booking.html">
+
+<button class="btn">
+Book Your Tour
+</button>
+
+</a>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Popular Destinations
+</h2>
+
+<div class="search-wrapper">
+
+<div class="search-box">
+
+<input type="text"
+id="searchInput"
+placeholder="Search Luxury Destinations...">
+
+<button id="searchBtn">
+🔍
+</button>
+
+</div>
+
+<ul id="suggestions"></ul>
+
+</div>
+
+<div class="cards">
+
+<!-- Maldives -->
+
+<article class="card"
+data-city="Maldives">
+
+<div class="image-container">
+
+<img
+src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+alt="Maldives Beach Resort">
+
+<div class="overlay">
+
+<h3>Maldives</h3>
+
+<p>
+Luxury Beach Paradise
+</p>
+
+<button class="btn details-btn">
+View Details
+</button>
+
+</div>
+
+</div>
+
+<div class="card-content">
+
+<h3>Maldives</h3>
+
+<p>⭐⭐⭐⭐⭐ Premium Tour</p>
+
+<p>$2500 Luxury Package</p>
+
+</div>
+
+</article>
+
+<!-- Paris -->
+
+<article class="card"
+data-city="Paris">
+
+<div class="image-container">
+
+<img
+src="https://images.unsplash.com/photo-1493558103817-58b2924bce98"
+alt="Paris Eiffel Tower">
+
+<div class="overlay">
+
+<h3>Paris</h3>
+
+<p>
+Romantic Europe Experience
+</p>
+
+<button class="btn details-btn">
+View Details
+</button>
+
+</div>
+
+</div>
+
+<div class="card-content">
+
+<h3>Paris</h3>
+
+<p>⭐⭐⭐⭐ Luxury Tour</p>
+
+<p>$3200 Europe Package</p>
+
+</div>
+
+</article>
+
+<!-- Switzerland -->
+
+<article class="card"
+data-city="Switzerland">
+
+<div class="image-container">
+
+<img
+src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+alt="Switzerland Mountains">
+
+<div class="overlay">
+
+<h3>Switzerland</h3>
+
+<p>
+Snow & Adventure Experience
+</p>
+
+<button class="btn details-btn">
+View Details
+</button>
+
+</div>
+
+</div>
+
+<div class="card-content">
+
+<h3>Switzerland</h3>
+
+<p>⭐⭐⭐⭐⭐ Adventure Tour</p>
+
+<p>$4100 Premium Package</p>
+
+</div>
+
+</article>
+
+<!-- Dubai -->
+
+<article class="card"
+data-city="Dubai">
+
+<div class="image-container">
+
+<img
+src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c"
+alt="Dubai City">
+
+<div class="overlay">
+
+<h3>Dubai</h3>
+
+<p>
+Luxury Desert & City Life
+</p>
+
+<button class="btn details-btn">
+View Details
+</button>
+
+</div>
+
+</div>
+
+<div class="card-content">
+
+<h3>Dubai</h3>
+
+<p>⭐⭐⭐⭐⭐ Luxury Tour</p>
+
+<p>$2800 City Package</p>
+
+</div>
+
+</article>
+
+<!-- Bali -->
+
+<article class="card"
+data-city="Bali">
+
+<div class="image-container">
+
+<img
+src="https://images.unsplash.com/photo-1537996194471-e657df975ab4"
+alt="Bali Indonesia">
+
+<div class="overlay">
+
+<h3>Bali</h3>
+
+<p>
+Island Relaxation & Resorts
+</p>
+
+<button class="btn details-btn">
+View Details
+</button>
+
+</div>
+
+</div>
+
+<div class="card-content">
+
+<h3>Bali</h3>
+
+<p>⭐⭐⭐⭐ Relax Tour</p>
+
+<p>$2200 Holiday Package</p>
+
+</div>
+
+</article>
+
+<!-- Turkey -->
+
+<article class="card"
+data-city="Turkey">
+
+<div class="image-container">
+
+<img
+src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200"
+alt="Turkey Cappadocia">
+
+<div class="overlay">
+
+<h3>Turkey</h3>
+
+<p>
+Historical & Hot Air Balloon Tour
+</p>
+
+<button class="btn details-btn">
+View Details
+</button>
+
+</div>
+
+</div>
+
+<div class="card-content">
+
+<h3>Turkey</h3>
+
+<p>⭐⭐⭐⭐⭐ Historic Tour</p>
+
+<p>$3000 Premium Experience</p>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<article class="card"
+data-city="Switzerland">
+
+<div class="image-container">
+
+<img
+src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+alt="Swiss Mountains">
+
+<div class="overlay">
+
+<h3>Switzerland</h3>
+
+<p>Snow Adventures</p>
+
+<button class="btn details-btn">
+View Details
+</button>
+
+</div>
+
+</div>
+
+<div class="card-content">
+
+<h3>Switzerland</h3>
+
+<p>⭐⭐⭐⭐⭐</p>
+
+<p>$4100 Adventure Package</p>
+
+</div>
+
+</article>
+
+</div>
+
+<div class="stats">
+
+<div class="stat-box">
+
+<h2>5000+</h2>
+
+<p>Happy Travelers</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>120+</h2>
+
+<p>Destinations</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>24/7</h2>
+
+<p>Support System</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<div class="modal"
+id="destinationModal">
+
+<div class="modal-content">
+
+<span class="close-btn">
+&times;
+</span>
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalText"></p>
+
+<br>
+
+<button class="btn book-tour-btn">
+
+Book This Tour
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<footer>
+
+<p>
+© 2026 TRAVELIX | Smart Travel Booking Website
+</p>
+
+</footer>
+
+<script>
+
+const progressBar =
+document.getElementById("progressBar");
+
+window.addEventListener("scroll",()=>{
+
+const scrollTop =
+document.documentElement.scrollTop;
+
+const scrollHeight =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
+
+const progress =
+(scrollTop / scrollHeight) * 100;
+
+progressBar.style.width =
+progress + "%";
+
+});
+
+const hero =
+document.getElementById("hero");
+
+const backgrounds = [
+
+"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+
+"https://images.unsplash.com/photo-1493558103817-58b2924bce98",
+
+"https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+
+];
+
+let current = 0;
+
+const changeBackground = ()=>{
+
+hero.style.backgroundImage =
+`url(${backgrounds[current]})`;
+
+current++;
+
+if(current >= backgrounds.length){
+current = 0;
+}
+
+};
+
+changeBackground();
+
+setInterval(changeBackground,3000);
+
+const cities = [
+"Maldives",
+"Paris",
+"Switzerland",
+"Turkey",
+"Dubai",
+"London",
+"Bali",
+"Italy"
+];
+
+const searchInput =
+document.getElementById("searchInput");
+
+const suggestions =
+document.getElementById("suggestions");
+
+searchInput.addEventListener("keyup",(e)=>{
+
+suggestions.innerHTML = "";
+
+const value =
+e.target.value.toLowerCase();
+
+const filtered =
+cities.filter(city =>
+city.toLowerCase().includes(value)
+);
+
+filtered.forEach(city => {
+
+const li =
+document.createElement("li");
+
+li.textContent = city;
+
+li.addEventListener("click",()=>{
+
+searchInput.value = city;
+
+suggestions.innerHTML = "";
+
+});
+
+suggestions.appendChild(li);
+
+});
+
+});
+
+const detailsButtons =
+document.querySelectorAll(".details-btn");
+
+const modal =
+document.getElementById("destinationModal");
+
+const closeBtn =
+document.querySelector(".close-btn");
+
+const modalTitle =
+document.getElementById("modalTitle");
+
+const modalText =
+document.getElementById("modalText");
+
+detailsButtons.forEach(button => {
+
+button.addEventListener("click",(e)=>{
+
+const card =
+e.target.closest(".card");
+
+const city =
+card.dataset.city;
+
+modal.style.display = "flex";
+
+modalTitle.textContent = city;
+
+modalText.textContent =
+`${city} offers luxury hotels, amazing adventures, beautiful views, and unforgettable experiences.`;
+
+});
+
+});
+
+closeBtn.addEventListener("click",()=>{
+
+modal.style.display = "none";
+
+});
+
+window.addEventListener("click",(e)=>{
+
+if(e.target === modal){
+
+modal.style.display = "none";
+
+}
+
+});
+
+const toggleBtn =
+document.querySelector(".toggle-btn");
+
+toggleBtn.addEventListener("click",()=>{
+
+document.body.classList.toggle("dark-mode");
+
+});
+
+</script>
+
+</body>
+</html>
