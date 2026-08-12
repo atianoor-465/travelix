@@ -4,7 +4,7 @@ A responsive hotel booking website built with HTML, CSS, and JavaScript.
 
 ## 🚀 Live Demo
 
-[Live Demo](#)
+[Live Demo]https://travelix-atia.netlify.app/
 
 ## ✨ Features
 
