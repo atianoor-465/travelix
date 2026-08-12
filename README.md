@@ -1,46 +1,37 @@
-# Hotel Booking Website
+# Travelix – Travel & Hotel Booking Website
 
-A responsive hotel booking website built with HTML, CSS, and JavaScript.
+A responsive travel and hotel booking website built with HTML, CSS, and JavaScript, designed to provide users with a clean and user-friendly interface for exploring travel and hotel booking options.
 
 ## 🚀 Live Demo
 
-[Live Demo]https://travelix-atia.netlify.app/
+[Live Demo](https://travelix-atia.netlify.app/)
 
 ## ✨ Features
 
-* 🏨 Hotel booking interface
-* 🔎 Hotel search functionality
-* 📅 Interactive booking form
-* 🏠 Home, About, and Booking pages
-* 📱 Responsive design
-* ⚡ JavaScript-powered interactions
-* 🎨 Clean and user-friendly interface
+- ✈️ Travel and hotel booking interface
+- 🔎 Search functionality
+- 🏨 Hotel booking sections
+- 📅 Interactive booking form
+- 🏠 Home and travel-related sections
+- 📱 Fully responsive design
+- ⚡ JavaScript-powered interactions
+- 🎨 Modern and user-friendly interface
+- 🧭 Clean travel-focused UI
 
 ## 🛠️ Technologies Used
 
-* HTML5
-* CSS3
-* JavaScript
+- HTML5
+- CSS3
+- JavaScript
 
 ## 📂 Project Structure
 
 ```text
-hotel-booking/
+travelix/
 ├── index.html
-├── about.html
-├── booking.html
 ├── css/
 │   └── style.css
-└── js/
-    └── script.js
-```
-
-## 🎯 Purpose
-
-This project was developed to practice frontend web development, responsive web design, JavaScript logic, DOM manipulation, and interactive user interfaces.
-
-## 👩‍💻 Author
-
-**Atia Noor**
-
-Software Engineering Student | Frontend & Full-Stack Developer
+├── js/
+│   └── script.js
+└── assets/
+    └── images/
